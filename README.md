@@ -13,7 +13,7 @@ I would like to see a list of links
 
 **Adding new links**
 ```
-As a User
+KAKs a User
 So I can add to my bookmarks
 I would like to to be able to save site links and titles
 ```
