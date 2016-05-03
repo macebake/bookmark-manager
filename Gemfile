@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'rspec-sinatra'
 gem 'rake'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
 
 group :test do
   gem 'rspec'
