@@ -1,4 +1,4 @@
 require './app.rb'
 
-run Sinatra::Application
- # run Bookmark
+require File.join(File.dirname(__FILE__))
+ run Bookmark
