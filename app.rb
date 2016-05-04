@@ -6,4 +6,5 @@ class Bookmark < Sinatra::Base
     @links = Link.all
     erb :links
   end
+ run! if app_file == $0
 end

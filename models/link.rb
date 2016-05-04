@@ -1,9 +1,6 @@
-# require 'dm-migrations'
+require 'dm-migrations'
 require 'data_mapper'
 require 'dm-postgres-adapter'
-
-# DataMapper::Logger.new($stdout, :debug)
-# DataMapper.setup(:default, "postgres://localhost/bookmark_manager")
 
 class Link
   include DataMapper::Resource
