@@ -10,8 +10,11 @@ class BookmarkManager < Sinatra::Base
     redirect '/links'
   end
 
-  get '/links' do
+  before do
     @links = Link.all
+  end
+
+  get '/links' do
     @tags = Tag.all
     erb :index
   end
@@ -27,6 +30,15 @@ class BookmarkManager < Sinatra::Base
     link.save
     redirect '/'
   end
+
+  get '/tags/bubbles' do
+    erb :bubbles
+  end
+
+  get "/tags/#{@search}" do
+    erb :search
+  end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
