@@ -3,13 +3,11 @@
 # I would like to add the site's address and title to my bookmark manager
 
 require_relative '../spec_helper'
+require_relative 'web_helpers'
 
 feature 'adding new links' do
   scenario 'add the address and the title to book manager'do
-    visit('/links/new')
-    fill_in('title', :with => 'Makers Academy/about-us')
-    fill_in('url', :with => 'http://www.makersacademy.com/about-us/')
-    click_button('add to links')
+    add_link
 
     expect(current_path).to eq '/links'
 

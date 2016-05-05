@@ -5,7 +5,12 @@
     <li>
       Title: <%= link.title %>
       URL:   <%= link.url   %>
-      Tags: <%=  link.tags.map(&:name)  %>
+      Tags: <%=  link.tags.map(&:name).first  %>
     </li>
   <% end %>
 </ul>
+<form action="/links/tags">
+  <input type='text' name='filter'>
+  <br>
+  <input type="submit" value="filter by this tag">
+</form>

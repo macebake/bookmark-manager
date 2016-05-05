@@ -8,6 +8,8 @@ require './models/tag.rb'
 
 class Bookmark < Sinatra::Base
 
+  enable :sessions
+
   get '/links' do
     @links = Link.all
     erb :links
@@ -21,6 +23,12 @@ class Bookmark < Sinatra::Base
     link.tags << tag
     link.save
     redirect '/links'
+  end
+
+  get "/links/tags" do
+    tag = Tag.first(name: params[:filter])
+    @links = tag ? tag.links : []
+    erb :links
   end
 
  run! if app_file == $0
