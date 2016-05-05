@@ -10,11 +10,8 @@ class BookmarkManager < Sinatra::Base
     redirect '/links'
   end
 
-  before do
-    @links = Link.all
-  end
-
   get '/links' do
+    @links = Link.all
     @tags = Tag.all
     erb :index
   end
@@ -35,7 +32,9 @@ class BookmarkManager < Sinatra::Base
     erb :bubbles
   end
 
-  get "/tags/#{@search}" do
+  get '/tags/:name' do
+    tag = Tag.all(name: params[:name])
+    @links = (tag ? tag.links : [])
     erb :search
   end
 
