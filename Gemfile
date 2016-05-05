@@ -2,7 +2,7 @@
 source "https://rubygems.org"
 
 
-# gem "rails"
+gem 'rake'
 gem 'sinatra'
 gem 'capybara'
 gem 'rspec'

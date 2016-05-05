@@ -13,3 +13,11 @@ def add_stupid_link
   fill_in('tags', :with => 'stupidshit')
   click_button('add to links')
 end
+
+def add_link_with_multiple_tags
+  visit('/links/new')
+  fill_in('title', :with => 'Reddit')
+  fill_in('url', :with => 'http://reddit.com')
+  fill_in('tags', :with => 'stupidshit bubbles')
+  click_button('add to links')
+end
