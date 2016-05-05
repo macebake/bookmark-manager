@@ -25,3 +25,15 @@ feature 'create new links' do
   end
 end
 
+feature 'Tags for links' do
+  scenario 'a user can tag links when the link is added' do
+    visit'/'
+    click_button('add new link')
+    fill_in('title', with: 'google')
+    fill_in('url', with: 'google.com')
+    fill_in('tag', with: 'search')
+    click_button('submit')
+    expect(page).to have_content('tags : search')
+  end
+end
+
