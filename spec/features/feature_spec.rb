@@ -16,7 +16,7 @@ feature 'create new links' do
     visit '/links/new'
     fill_in "title", with: "Makers"
     fill_in "url", with: "http://www.makersacademy.com/"
-    
+
     click_button 'submit'
     expect(current_path).to eq '/links'
     within 'ul#links' do
@@ -35,5 +35,15 @@ feature 'Tags for links' do
     click_button('submit')
     expect(page).to have_content('tags : search')
   end
-end
 
+  scenario 'user can filter link by tag' do
+    visit '/'
+    click_button('add new link')
+    fill_in('title', with: 'google')
+    fill_in('url', with: 'google.com')
+    fill_in('tag', with: 'bubbles')
+    click_button('submit')
+    visit '/tags/bubbles'
+    expect(page).to have_content "bubbles"
+  end
+end
