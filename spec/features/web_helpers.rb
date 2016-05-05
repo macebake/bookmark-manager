@@ -21,3 +21,10 @@ def add_link_with_multiple_tags
   fill_in('tags', :with => 'stupidshit bubbles')
   click_button('add to links')
 end
+
+def sign_up
+  visit('/users/new')
+  fill_in('email', :with => 'daniel@daniel.com')
+  fill_in('password', :with => 'hooray')
+  click_button('Submit')
+end
