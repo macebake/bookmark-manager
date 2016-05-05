@@ -7,8 +7,12 @@
   <li>
     Title: <%= link.title %>
     URL: <%= link.url %>
-    tags : <%= link.tags.map(&:name).first %>
-
+    tags : <%= link.tags.map(&:name) %>
+    <form action='/tags/add' method="post">
+      <input type='text' id= 'link.id' name='tag'>
+      <input type='text'name='id'value="<%=link.id%>">
+      <input type='submit' value="add tag">
+    </form>
   </li>
   <% end %>
 </ul>

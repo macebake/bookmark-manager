@@ -23,18 +23,7 @@ feature 'create new links' do
       expect(page).to have_content 'Makers'
     end
   end
-end
 
-feature 'Tags for links' do
-  scenario 'a user can tag links when the link is added' do
-    visit'/'
-    click_button('add new link')
-    fill_in('title', with: 'google')
-    fill_in('url', with: 'google.com')
-    fill_in('tag', with: 'search')
-    click_button('submit')
-    expect(page).to have_content('tags : search')
-  end
 
   before(:each) do
   Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy', tags: [Tag.first_or_create(name: 'education')])
@@ -50,5 +39,15 @@ feature 'Tags for links' do
     expect(page).not_to have_content "Makers Academy"
     expect(page).not_to have_content "Google"
     expect(page).not_to have_content "Code.org"
+  end
+
+  scenario 'user can add multiple tags' do
+    visit '/links'
+    click_button 'add new link'
+    expect(current_path).to eq '/links/new'
+    fill_in 'tag', with: "Search"
+    click_button 'submit'
+    expect(current_path).to eq '/links'
+    expect(page).to have_content "[\"Search\"]"
   end
 end
