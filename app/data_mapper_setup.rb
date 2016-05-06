@@ -6,4 +6,3 @@ require_relative 'models/tag'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/tags_#{ENV['RACK_ENV']}")
 DataMapper.finalize
-DataMapper.auto_upgrade!
