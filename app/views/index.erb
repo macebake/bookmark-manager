@@ -1,22 +1,23 @@
 <head>
   <title>Links</title>
 </head>
+<h1> Welcome <%= !!@user ? @user.email : "guest" %> </h1>
 
 <ul id='links'>
-  <% @links.each do |link| %>
+
+  <% @user.nil? ? "" : @user.links.each do |link| %>
   <li>
     Title: <%= link.title %>
     URL: <%= link.url %>
     tags : <%= link.tags.map(&:name) %>
-    <form action='/tags/add' method="post">
-      <input type='text' id= 'link.id' name='tag'>
-      <input type='text'name='id'value="<%=link.id%>">
-      <input type='submit' value="add tag">
-    </form>
   </li>
   <% end %>
 </ul>
 
 <form action='/links/new' method='get'>
   <input type='submit' value='add new link'>
+</form>
+
+<form action='/sign_up/new' method='get'>
+  <input type='submit' value="sign up">
 </form>

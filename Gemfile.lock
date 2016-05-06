@@ -118,7 +118,7 @@ DEPENDENCIES
   database_cleaner
   dm-migrations
   dm-postgres-adapter
-  rake
+  rake (= 10.4.2)
   rspec
   rspec-sinatra
   sinatra

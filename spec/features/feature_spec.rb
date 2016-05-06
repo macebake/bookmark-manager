@@ -1,22 +1,13 @@
-
-
-feature 'links on web page' do
-  scenario 'check if link is bookmarked' do
-    Link.create(title: "Gymbox", url: "http://gymbox.com/")
-    visit ('/links')
-    expect(page.status_code).to eq 200
-    within 'ul#links' do
-      expect(page).to have_content 'Gymbox'
-    end
-  end
-end
-
 feature 'create new links' do
   scenario 'create new links' do
-    visit '/links/new'
+    visit '/'
+    click_button 'sign up'
+    fill_in 'email', with: "maceb@gmail.com"
+    fill_in 'password', with: "butts"
+    click_button 'submit'
+    click_button "add new link"
     fill_in "title", with: "Makers"
     fill_in "url", with: "http://www.makersacademy.com/"
-
     click_button 'submit'
     expect(current_path).to eq '/links'
     within 'ul#links' do
@@ -43,11 +34,27 @@ feature 'create new links' do
 
   scenario 'user can add multiple tags' do
     visit '/links'
+    click_button 'sign up'
+    fill_in 'email', with: "maceb@gmail.com"
+    fill_in 'password', with: "butts"
+    click_button 'submit'
     click_button 'add new link'
     expect(current_path).to eq '/links/new'
     fill_in 'tag', with: "Search"
     click_button 'submit'
     expect(current_path).to eq '/links'
     expect(page).to have_content "[\"Search\"]"
+  end
+end
+
+feature 'user can sign up' do
+  scenario 'user can sign up on a new page' do
+    visit '/'
+    click_button 'sign up'
+    fill_in 'email', with: "maceb@gmail.com"
+    fill_in 'password', with: "butts"
+    click_button 'submit'
+    expect(current_path).to eq '/links'
+    expect(page).to have_content 'Welcome maceb@gmail.com'
   end
 end
